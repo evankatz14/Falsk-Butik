@@ -1,0 +1,16 @@
+<div class="ratings">
+  <div class="stars">
+    <ng-container *ngFor="let i of [].constructor(stars?.whole)">
+      <img class="star" src="../../../assets/images/star-solid.svg">
+    </ng-container>
+    <ng-container *ngIf="stars?.half">
+      <img class="half-star" src="../../../assets/images/star-half-stroke-regular.svg">
+    </ng-container>
+    <ng-container *ngFor="let i of [].constructor(stars?.empty)">
+      <img class="star" src="../../../assets/images/star-regular.svg">
+    </ng-container>
+  </div>
+  <div class="count">
+    ({{rating?.count ?? 0}})
+  </div>
+</div>

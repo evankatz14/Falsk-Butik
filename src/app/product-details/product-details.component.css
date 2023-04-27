@@ -1,0 +1,50 @@
+.breadcrumbs {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.details-wrapper {
+  margin: 10px 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+}
+
+.details-img-wrapper {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+
+.details-img {
+  width: 100%;
+  align-self: center;
+}
+
+.details-header {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-top: 60px;
+}
+
+.details {
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-weight: 600;
+}
+
+@media (max-width: 599px) {
+  .details-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,10 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.title {
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+}

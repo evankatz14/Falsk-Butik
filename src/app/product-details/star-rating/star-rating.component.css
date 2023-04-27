@@ -1,0 +1,26 @@
+.ratings {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+  margin-right: 8px;
+}
+
+.star {
+  width: 12px;
+}
+
+.half-star {
+  width: 14px;
+}
+
+.count {
+  font-family: sans-serif;
+  font-size: 11px;
+}
