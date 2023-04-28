@@ -9,6 +9,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     ProductDetailsComponent,
     StarRatingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     AppRoutingModule,

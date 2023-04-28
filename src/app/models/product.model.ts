@@ -6,6 +6,7 @@ export interface Product {
   category: string;
   image: string;
   rating: Rating;
+  cartCount?: number;
 }
 
 export interface Rating {

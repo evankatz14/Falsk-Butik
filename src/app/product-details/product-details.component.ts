@@ -4,6 +4,7 @@ import { Location } from '@angular/common'
 
 import { Product } from '../models/product.model';
 import { ProductService } from '../product.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute,
     private location: Location,
   ) {}
@@ -31,6 +33,12 @@ export class ProductDetailsComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  addToCart(): void {
+    if (this.product) {
+      this.cartService.addItemToCart(this.product);
+    }
   }
 
 }

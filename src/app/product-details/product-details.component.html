@@ -1,9 +1,9 @@
 <div *ngIf="product">
-  <h4>
-    <span class="breadcrumbs" (click)="goBack()">
-      products
-    </span> > <span>{{product.title}}</span>
-  </h4>
+  <div class="breadcrumbs">
+    <p class="elipsis" (click)="goBack()">...</p>
+    <span>></span>
+    <p class="product-title">{{product.title}}</p>
+  </div>
   <div class="details-wrapper">
     <div class="details-img-wrapper">
       <img class="details-img" src="{{product.image}}">
@@ -14,5 +14,6 @@
       <app-star-rating [rating]="product.rating"></app-star-rating>
       <div class="details price">{{product.price | currency}}</div>
     </div>
+    <button type="button" (click)="addToCart()">Add To Cart</button>
   </div>
 </div>

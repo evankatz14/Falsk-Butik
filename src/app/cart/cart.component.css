@@ -1,0 +1,93 @@
+.header {
+  font-family: monospace;
+  margin-left: 20px;
+}
+
+.here {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item {
+  margin: 10px 30px;
+  padding: 4px 10px 20px 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 16px;
+  border: solid 1px gray;
+}
+
+.img-wrapper {
+  height: 200px;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+
+.cart-img {
+  max-height: 100%;
+  align-self: center;
+}
+
+.details-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.quantity-button {
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 0px 4px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.chevron {
+  width: 8px;
+}
+
+.trash-icon{
+  width: 12px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.details {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.total {
+  display: flex;
+  height: 100%;
+  margin-left: 20px;
+}
+
+.total-price {
+  font-weight: 600;
+  align-self: center;
+}
+
+.remove-item {
+  align-self: flex-start;
+  width: 20px;
+  cursor: pointer;
+}
+
+

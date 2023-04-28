@@ -1,0 +1,32 @@
+<h2 class="header">Cart</h2>
+<div class="empty-cart" *ngIf="cart.length === 0">
+    Your cart is currently empty. click <a class="here" routerLink="/products">here</a> to start shopping
+</div>
+<div class="cart-list" *ngIf="cart.length > 0">
+  <div class="cart-item" *ngFor="let item of cart">
+    <div class="img-wrapper">
+      <img class="cart-img" src="{{item.image}}">
+    </div>
+    <div class="details-wrapper">
+      <div class="details">
+        <div>{{item.title}}</div>
+        <div class="quantity">
+          <div class="price">{{item.price | currency}} x {{item.cartCount ?? 1}}</div>
+          <div style="display: flex; flex-direction: column;">
+            <button class="quantity-button" (click)="incrementCount(item)">
+              <img class="chevron" src="../../assets/images/chevron-up-solid.svg">
+            </button>
+            <button class="quantity-button" (click)="decrementCount(item)">
+              <img class="chevron" src="../../assets/images/chevron-down-solid.svg">
+            </button>
+          </div>
+          <img class="trash-icon" (click)="removeCartItem(item)" src="../../assets/images/trash-can-solid.svg">
+        </div>
+      </div>
+      <div class="total">
+        <div class="total-price">{{item.price * (item.cartCount ?? 1) | currency}}</div>
+        <img class="remove-item" (click)="removeCartItem(item)" src="../../assets/images/square-xmark-solid.svg">
+      </div>
+    </div>
+  </div>
+</div>
