@@ -32,7 +32,6 @@
 
 .details-img-wrapper {
   height: 400px;
-  width: 300px;
   display: flex;
   align-self: center;
   justify-self: center;
@@ -66,5 +65,9 @@
   .details-wrapper {
     display: flex;
     flex-direction: column;
+  }
+
+  .details-header {
+    margin-top: 20px;
   }
 }

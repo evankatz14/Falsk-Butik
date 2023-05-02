@@ -1,15 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { CartComponent } from './cart/cart.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { CartComponent } from './cart/cart.component';
     StarRatingComponent,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],
