@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Credentials } from './models/user.model';
+import { Credentials } from '../models/user.model';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 
 @Injectable({

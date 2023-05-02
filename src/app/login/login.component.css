@@ -1,0 +1,31 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.login-box {
+  margin-top: 18%;
+  border: black 1px solid;
+  border-radius: 4px;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin-bottom: 12px;
+  width: 150px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}

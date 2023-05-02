@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common'
 
 import { Product } from '../models/product.model';
-import { ProductService } from '../product.service';
-import { CartService } from '../cart.service';
+import { CartService } from '../services/cart.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-details',

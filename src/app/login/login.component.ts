@@ -1,6 +1,7 @@
-import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required])
     });
   }
 
-  login(username?: string, password?: string) {
-    this.auth.login(username, password)
-      // .subscribe(
-      //   (response) => {
-      //     alert('Successfully Logged in');
-      //   },
-      //   (error) => {
-      //     alert('Login Failed')
-      //   }
-      // );
+  login() {
+    this.auth.login(this.loginForm.value.username, this.loginForm.value.password)
+      .subscribe(
+        (response) => {
+          console.log({response});
+          this.router.navigate(['/products']);
+        },
+        (error) => {
+          alert(`Login Failed: ${error}`);
+        }
+      );
   }
 }

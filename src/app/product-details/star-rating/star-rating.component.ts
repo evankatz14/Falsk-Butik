@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Rating } from './../../models/product.model';
+import { Rating } from '../../models/product.model';
 
 export interface Stars {
   whole: number;
