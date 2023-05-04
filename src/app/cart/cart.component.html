@@ -3,13 +3,13 @@
     Your cart is currently empty. click <a class="here" routerLink="/products">here</a> to start shopping
 </div>
 <div class="cart-list" *ngIf="cart.length > 0">
-  <div class="cart-item" *ngFor="let item of cart">
-    <div class="img-wrapper">
+  <a class="cart-item" *ngFor="let item of cart">
+    <a class="img-wrapper" routerLink="/products/{{item.id}}">
       <img class="cart-img" src="{{item.image}}">
-    </div>
+    </a>
     <div class="details-wrapper">
       <div class="details">
-        <div>{{item.title}}</div>
+        <a routerLink="/products/{{item.id}}">{{item.title}}</a>
         <div class="quantity">
           <div class="price">{{item.price | currency}} x {{item.cartCount ?? 1}}</div>
           <div style="display: flex; flex-direction: column;">
@@ -28,5 +28,5 @@
         <img class="remove-item" (click)="removeCartItem(item)" src="../../assets/images/square-xmark-solid.svg">
       </div>
     </div>
-  </div>
+  </a>
 </div>

@@ -29,7 +29,6 @@ export class AuthService {
     return this.http.post<{token: string}>(this.loginUrl, credentials, this.httpOptions)
       .pipe(
         tap(response => {
-          console.log({response});
           this.token = response.token;
           localStorage.setItem('login_token', response.token);
           this.isLoggedInSubject.next(true);

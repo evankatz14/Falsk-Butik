@@ -44,6 +44,21 @@
   width: 20px;
 }
 
+.cart-badge {
+  border-radius: 50%;
+  background-color: royalblue;
+  color: white;
+  width: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  line-height: 14px;
+  position: absolute;
+  right: 60px;
+  top: 12px;
+}
+
 div {
   font-family: sans-serif;
   font-size: 12px;

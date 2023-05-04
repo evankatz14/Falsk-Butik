@@ -22,7 +22,6 @@ export class LoginComponent {
     this.auth.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
         (response) => {
-          console.log({response});
           this.router.navigate(['/products']);
         },
         (error) => {

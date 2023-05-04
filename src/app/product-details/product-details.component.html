@@ -13,7 +13,20 @@
       <div class="details">{{product.description}}</div>
       <app-star-rating [rating]="product.rating"></app-star-rating>
       <div class="details price">{{product.price | currency}}</div>
+      <div class="quantity">
+        <div>Quantity:</div>
+        <div class="count">{{product.cartCount}}</div>
+        <div style="display: flex; flex-direction: column;">
+          <button class="quantity-button" (click)="incrementCartCount()">
+            <img class="chevron" src="../../assets/images/chevron-up-solid.svg">
+          </button>
+          <button class="quantity-button" (click)="decrementCartCount()">
+            <img class="chevron" src="../../assets/images/chevron-down-solid.svg">
+          </button>
+        </div>
+      </div>
+      <button *ngIf="!isItemInCart()" class="cart-button" type="button" (click)="addToCart()">Add To Cart</button>
+      <button *ngIf="isItemInCart()" class="cart-button" type="button" (click)="removeFromCart()">Remove From Cart</button>
     </div>
-    <button type="button" (click)="addToCart()">Add To Cart</button>
   </div>
 </div>

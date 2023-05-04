@@ -6,6 +6,7 @@
     <a class="cart" routerLink="/cart">
       <img class="icon" src="../../assets/images/cart-shopping-solid.svg">
       Cart
+      <div *ngIf="cartCount > 0 && isLoggedIn" class="cart-badge">{{cartCount}}</div>
     </a>
     <div class="logout" (click)="logout()">
       <img class="icon" src="../../assets/images/arrow-right-from-bracket-solid.svg">
