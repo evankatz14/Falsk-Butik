@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import { ProductsListComponent } from './products-list/products-list.component';
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    LoginComponent
+    LoginComponent,
+    SearchComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

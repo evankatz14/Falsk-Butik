@@ -1,0 +1,18 @@
+<div class="search-bar">
+  <input
+    #searchBox
+    id="search-box"
+    (input)="search(searchBox.value)"
+    placeholder="Search products"
+    (focusin)="onFocusIn()"
+    (focusout)="onFocusOut()"
+  />
+
+  <ul *ngIf="isSearchFocused" class="search-result">
+    <li *ngFor="let product of products$ | async" >
+      <a routerLink="/products/{{product.id}}">
+        {{product.title}}
+      </a>
+    </li>
+  </ul>
+</div>

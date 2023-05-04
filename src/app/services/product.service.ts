@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 import { Product } from '../models/product.model';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,20 @@ export class ProductService {
     return this.http.get<Product>(url)
       .pipe(
         catchError(this.handleError<Product>('getProduct'))
+      )
+  }
+
+  searchProducts(term: string): Observable<Product[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    const regex = new RegExp(term, "i");
+    return this.http.get<Product[]>(this.productUrl)
+      .pipe(
+        map(result => {
+          return result.filter(product => regex.test(product.title));
+        }),
+        catchError(this.handleError<Product[]>('searchProducts', [])),
       )
   }
 
