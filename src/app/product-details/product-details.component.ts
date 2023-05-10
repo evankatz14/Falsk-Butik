@@ -1,11 +1,12 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common'
 
+import { Store } from '@ngrx/store';
+import { addToCart, decrementCartItemCount, incrementCartItemCount, removeFromCart } from '../cart/cart-state/cart.actions';
+import { selectCart } from '../cart/cart-state/cart.selectors';
 import { Product } from '../models/product.model';
-import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
@@ -14,23 +15,27 @@ import { map } from 'rxjs';
 })
 export class ProductDetailsComponent implements OnInit {
   product?: Product;
-  cart?: any;
+  cart$ = this.store.select(selectCart);
+  isInCart: boolean = false;
+  cartCount: number = 1;
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService,
     private route: ActivatedRoute,
     private location: Location,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
-      this.getProduct();
-      this.getCart();
-      // if (this.product) {
-      //   const cartItem = this.cart.find((item: any) => item.id === this.product?.id);
-      //   console.log({cartItem});
-      //   this.product.cartCount = cartItem && cartItem.cartCount ? cartItem.cartCount : 1;
-      // }
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.getProduct();
+    this.cart$.subscribe(
+      cart => {
+        const cartItem = cart.find(item => item.id === id);
+        this.isInCart = Boolean(cartItem);
+        this.cartCount = cartItem?.cartCount ?? this.cartCount;
+      }
+    );
   }
 
   getProduct(): void {
@@ -38,14 +43,9 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProduct(id)
       .subscribe(product => {
         this.product = product;
-        this.product.cartCount = this.isItemInCart() ? this.cart.find((item: any) => item.id === this.product?.id).cartCount : 1;
+        this.product.cartCount = this.cartCount;
         return this.product;
       });
-  }
-
-  getCart(): void {
-    this.cartService.getItemsFromCart()
-      .subscribe(cart => this.cart = cart);
   }
 
   goBack(): void {
@@ -54,37 +54,27 @@ export class ProductDetailsComponent implements OnInit {
 
   incrementCartCount() {
     if (this.product) {
+      this.store.dispatch(incrementCartItemCount(this.product));
       this.product.cartCount = this.product.cartCount ? this.product.cartCount + 1 : 1;
-      if (this.isItemInCart()) {
-        this.cartService.incrementItemCount(this.product);
-      }
     }
   }
 
   decrementCartCount() {
     if (this.product) {
+      this.store.dispatch(decrementCartItemCount(this.product));
       this.product.cartCount = this.product.cartCount && this.product.cartCount > 1 ? this.product.cartCount - 1 : 1;
-      if (this.isItemInCart()) {
-        this.cartService.decrementItemCount(this.product);
-      }
     }
   }
 
   addToCart(): void {
     if (this.product) {
-      this.cart.push(this.product);
-      this.cartService.addItemToCart(this.product);
+      this.store.dispatch(addToCart(this.product));
     }
   }
 
   removeFromCart(): void {
     if (this.product) {
-      this.cart = this.cart.filter((item: any) => item.id !== this.product?.id);
-      this.cartService.removeItemFromCart(this.product);
+      this.store.dispatch(removeFromCart(this.product));
     }
-  }
-
-  isItemInCart(): boolean {
-    return this.cart.find((item: any) => item.id === this.product?.id);
   }
 }

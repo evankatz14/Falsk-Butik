@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { CartService } from '../services/cart.service';
-import { Observable, map } from 'rxjs';
-import { Product } from '../models/product.model';
+import { Store } from '@ngrx/store';
+import { selectCart } from '../cart/cart-state/cart.selectors';
 
 @Component({
   selector: 'app-header',
@@ -14,19 +13,20 @@ export class HeaderComponent implements OnInit{
   title = 'Falsk Butik';
   cartCount = 0;
   isLoggedIn = false;
+  cart$ = this.store.select(selectCart);
 
   constructor(
     private auth: AuthService,
-    private cartService: CartService,
     private router: Router,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
     this.auth.isLoggedIn$
       .subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
-    this.cartService.getItemsFromCart();
-    this.cartService.cartCount$
-      .subscribe(count => this.cartCount = count);
+    this.cart$.subscribe(
+      cart => this.cartCount = cart.length
+    )
   }
 
   logout(): void {

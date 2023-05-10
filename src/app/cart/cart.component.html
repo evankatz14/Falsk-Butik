@@ -1,9 +1,9 @@
 <h2 class="header">Cart</h2>
-<div class="empty-cart" *ngIf="cart.length === 0">
+<div class="empty-cart" *ngIf="(cart$ | async)?.length === 0">
     Your cart is currently empty. click <a class="here" routerLink="/products">here</a> to start shopping
 </div>
-<div class="cart-list" *ngIf="cart.length > 0">
-  <a class="cart-item" *ngFor="let item of cart">
+<div class="cart-list" >
+  <a class="cart-item" *ngFor="let item of cart$ | async">
     <a class="img-wrapper" routerLink="/products/{{item.id}}">
       <img class="cart-img" src="{{item.image}}">
     </a>

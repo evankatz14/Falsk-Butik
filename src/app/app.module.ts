@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
@@ -13,6 +16,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { SearchComponent } from './search/search.component';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,12 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@
       <div class="details price">{{product.price | currency}}</div>
       <div class="quantity">
         <div>Quantity:</div>
-        <div class="count">{{product.cartCount}}</div>
+        <div class="count">{{product.cartCount ?? cartCount}}</div>
         <div style="display: flex; flex-direction: column;">
           <button class="quantity-button" (click)="incrementCartCount()">
             <img class="chevron" src="../../assets/images/chevron-up-solid.svg">
@@ -25,8 +25,8 @@
           </button>
         </div>
       </div>
-      <button *ngIf="!isItemInCart()" class="cart-button" type="button" (click)="addToCart()">Add To Cart</button>
-      <button *ngIf="isItemInCart()" class="cart-button" type="button" (click)="removeFromCart()">Remove From Cart</button>
+      <button *ngIf="!isInCart" class="cart-button" type="button" (click)="addToCart()">Add To Cart</button>
+      <button *ngIf="isInCart" class="cart-button" type="button" (click)="removeFromCart()">Remove From Cart</button>
     </div>
   </div>
 </div>

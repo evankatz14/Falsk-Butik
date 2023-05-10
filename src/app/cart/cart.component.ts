@@ -1,47 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from '../models/product.model';
-import { CartService } from '../services/cart.service';
+import { Store } from '@ngrx/store';
+import { selectCart } from './cart-state/cart.selectors';
+import { decrementCartItemCount, incrementCartItemCount, removeFromCart } from './cart-state/cart.actions';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
-  cart: Product[] = [];
+export class CartComponent {
+  cart$ = this.store.select(selectCart);
 
-  constructor(private cartService: CartService) {}
-
-  ngOnInit(): void {
-    this.getCartItems();
-  }
-
-  getCartItems(): void {
-    this.cartService.getItemsFromCart()
-      .subscribe(cart => this.cart = cart);
-  }
+  constructor(private store: Store) {}
 
   removeCartItem(item: Product): void {
-    this.cart = this.cart.filter(cartItem => cartItem.id !== item.id);
-    this.cartService.removeItemFromCart(item);
+    this.store.dispatch(removeFromCart(item));
   }
 
   incrementCount(item: Product) {
-    const updatedItem = this.cart.find(cartItem => cartItem.id === item.id);
-    if (!updatedItem) {
-      return;
-    }
-    updatedItem.cartCount = updatedItem.cartCount ? updatedItem.cartCount += 1 : 2;
-    this.cartService.incrementItemCount(item);
+    this.store.dispatch(incrementCartItemCount(item));
   }
 
   decrementCount(item: Product) {
-    const updatedItem = this.cart.find(cartItem => cartItem.id === item.id);
-    if (!updatedItem || updatedItem && !updatedItem.cartCount || updatedItem && updatedItem.cartCount && updatedItem.cartCount < 1) {
-      return;
-    }
-    updatedItem.cartCount = updatedItem.cartCount && updatedItem.cartCount > 1? updatedItem.cartCount -= 1 : 1;
-    this.cartService.decrementItemCount(item);
+    this.store.dispatch(decrementCartItemCount(item));
   }
 
 }
