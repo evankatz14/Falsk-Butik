@@ -12,9 +12,9 @@ import { CartComponent } from './cart/cart.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { StarRatingComponent } from './product-details/star-rating/star-rating.component';
-import { ProductsListComponent } from './products-list/products-list.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { StarRatingComponent } from './product/product-details/star-rating/star-rating.component';
+import { ProductsListComponent } from './product/products-list/products-list.component';
 import { SearchComponent } from './search/search.component';
 import { reducers, metaReducers } from './reducers';
 

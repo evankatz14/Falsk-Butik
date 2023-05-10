@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectCart } from '../cart/cart-state/cart.selectors';
+import { selectCart } from '../reducers/cart-state/cart.selectors';
 
 @Component({
   selector: 'app-header',

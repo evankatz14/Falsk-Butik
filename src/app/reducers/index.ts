@@ -6,7 +6,7 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
-import { cartReducer } from '../cart/cart-state/cart.reducer';
+import { cartReducer } from './cart-state/cart.reducer';
 
 export interface State {
 

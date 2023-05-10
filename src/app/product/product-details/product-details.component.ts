@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { addToCart, decrementCartItemCount, incrementCartItemCount, removeFromCart } from '../cart/cart-state/cart.actions';
-import { selectCart } from '../cart/cart-state/cart.selectors';
-import { Product } from '../models/product.model';
-import { ProductService } from '../services/product.service';
+import { addToCart, decrementCartItemCount, incrementCartItemCount, removeFromCart } from '../../reducers/cart-state/cart.actions';
+import { selectCart } from '../../reducers/cart-state/cart.selectors';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-details',
