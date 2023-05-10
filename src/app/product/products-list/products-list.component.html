@@ -1,7 +1,7 @@
 <h2 class="header">The Products</h2>
 <app-search></app-search>
 <div class="products-list">
-  <a class="product-card" *ngFor="let product of products" routerLink="/products/{{product.id}}">
+  <a class="product-card" *ngFor="let product of products$ | async" routerLink="/products/{{product.id}}">
     <div class="img-wrapper">
       <img src="{{product.image}}" alt="{{product.title}}" class="product-img">
     </div>
