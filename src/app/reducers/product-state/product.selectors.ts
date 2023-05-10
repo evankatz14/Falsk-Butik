@@ -1,5 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { Product } from 'src/app/models/product.model';
+import { Product } from '../../models/product.model';
 
 export const selectAllProductsFeature = createFeatureSelector<Array<Product>>('products');
 

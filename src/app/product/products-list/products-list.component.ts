@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { selectAllProducts } from '../../reducers/product-state/product.selectors';
+import { getAllProductsStart } from '../../reducers/product-state/product.actions';
+import { ProductStore } from './../../reducers/product-state/product.reducer';
 
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { getAllProductsStart } from 'src/app/reducers/product-state/product.actions';
-import { selectAllProducts } from 'src/app/reducers/product-state/product.selectors';
-import { ProductStore } from 'src/app/reducers/product-state/product.reducer';
+
+
 
 @Component({
   selector: 'app-products-list',
@@ -18,7 +20,7 @@ export class ProductsListComponent implements OnInit {
   products$: Observable<Product[]>
 
   constructor(private productService: ProductService, private store: Store<ProductStore>) {
-    this.products$ =  this.store.select(state => state.products);
+    this.products$ =  this.store.select(selectAllProducts);
   }
 
   ngOnInit(): void {

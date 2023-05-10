@@ -1,5 +1,5 @@
-import { createSelector, createFeatureSelector } from "@ngrx/store";
-import { Product } from "src/app/models/product.model";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { Product } from '../../models/product.model';
 
 export interface CartState {
   cart: Product[];
